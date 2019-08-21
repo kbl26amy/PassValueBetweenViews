@@ -29,8 +29,9 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
             withIdentifier: "identifier", for: indexPath) as? TableViewCell else {
                 return UITableViewCell()
         }
-        // 1. Delegate Pattern：找到vc然後連接到cell裡的button
+//        1. Delegate Pattern：找到vc然後連接到cell裡的button
 //        cell.viewController = self
+        
 //        2. addTarget
 //        cell.deleteBtnOulet.addTarget(self, action: #selector(removeBtnByAddTarget(_:)), for: .touchUpInside)
         
@@ -58,26 +59,30 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         }
         nextVC.strText = cellNumber[indexPath.row]
         nextVC.index = indexPath.row
-//        nextVC.delegate = self
         
+//      1. closure
         nextVC.passClosure = { text in
             
             self.cellNumber[indexPath.row] = text
             
             tableView.reloadData()
         }
-       print(nextVC)
+        
+//       2. 使用delegate找到nextVC的delegate pattern
+//        nextVC.delegate = self
+        
+        print(nextVC)
         show(nextVC, sender: nil)
         
     }
  
-//      2. addTarget
+//      2. addTarget刪除的方法
     @objc func removeBtnByAddTarget(_ button: UIButton) {
         
         cellNumber.remove(at: button.tag)
         tableView.reloadData()
     }
-     // 1. Delegate Pattern：找到vc然後連接到cell裡的button
+//      1. Delegate Pattern：找到vc然後連接到cell裡的button
     func removeDidHitButtonInCell(_ cell: TableViewCell) {
         guard let indexPath = tableView.indexPath(for: cell) else {
             return
@@ -93,7 +98,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
             ) as? NextViewController else {
                 return
         }
-        
+//        1. closure
         nextVC.passClosure = { text in
             self.cellNumber.append(text)
             self.tableView.reloadData()
@@ -101,6 +106,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         
 //        2. delegate
 //        nextVC.delegate = self
+        
         show(nextVC, sender: nil)
     }
     

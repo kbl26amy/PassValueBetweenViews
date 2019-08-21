@@ -30,18 +30,19 @@ class NextViewController: UIViewController {
         
         print("按下傳值")
         
-//        if strText == ""{
-//        delegate?.getText(textField.text!)
-//        } else {
-//            delegate?.upDateText(textField.text!, index: index)
-//        }
-        
-       // Closure
+//     1. Closure
         
         guard let text = textField.text else {
             return
         }
         passClosure?(text)
+        
+//     2. 判斷delegate需要執行的方法
+//        if strText == ""{
+//        delegate?.getText(textField.text!)
+//        } else {
+//            delegate?.upDateText(textField.text!, index: index)
+//        }
         
        self.navigationController?.popViewController(animated: true)
     }
