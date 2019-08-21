@@ -34,7 +34,8 @@ see [Pass Value](https://github.com/Wuchiwei/iOS/tree/master/Pass_Value)
 
        cell.deleteClosure = {
             self.cellNumber.remove(at: indexPath.row)
-            tab
+            tableView.reloadData()
+        }
         
 # 反向傳值
 
