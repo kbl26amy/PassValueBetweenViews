@@ -58,6 +58,7 @@ see [Pass Value](https://github.com/Wuchiwei/iOS/tree/master/Pass_Value)
             delegate?.upDateText(textField.text!, index: index)
         }
 
+![](https://github.com/kbl26amy/PassValueBetweenViews/blob/master/傳值%20demo.gif?raw=true)
 ----
 ## changelog
 * 20-Aug-2019 re-design
